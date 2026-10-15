@@ -17,12 +17,75 @@
             line-height: 1.6;
         }
 
-        /* 轮播容器 */
+        /* ========== 侧边导航样式 ========== */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 240px;
+            height: 100vh;
+            background: #2c3e50;
+            z-index: 100;
+            padding:30px 15px;
+            overflow-y: auto;
+        }
+        .sidebar-logo{
+            color:#fff;
+            font-size:1.2rem;
+            font-weight:bold;
+            margin-bottom:30px;
+            padding-bottom:15px;
+            border-bottom:1px solid #445566;
+        }
+        .sidebar-menu .nav-item{
+            display:block;
+            width:100%;
+            text-align:left;
+            color:#ddd;
+            padding:12px 14px;
+            margin-bottom:8px;
+            border:none;
+            background:transparent;
+            border-radius:6px;
+            cursor:pointer;
+            font-size:1rem;
+            transition:0.2s;
+        }
+        .sidebar-menu .nav-item:hover,.sidebar-menu .nav-item.active{
+            background:#3498db;
+            color:#fff;
+        }
+        .main-wrap{
+            margin-left:240px;
+        }
+        .sidebar-mask{
+            display:none;
+            position:fixed;
+            inset:0;
+            background:rgba(0,0,0,0.5);
+            z-index:99;
+        }
+        .menu-toggle{
+            display:none;
+            position:fixed;
+            top:15px;
+            left:15px;
+            z-index:101;
+            background:#2c3e50;
+            color:#fff;
+            border:none;
+            width:44px;
+            height:44px;
+            border-radius:6px;
+            font-size:22px;
+            cursor:pointer;
+        }
+
+        /* ========== 轮播容器 ========== */
         .carousel-container {
             position: relative;
             height: 400px;
             overflow: hidden;
-            margin-top: 60px;
         }
 
         .carousel-slides {
@@ -60,7 +123,7 @@
             100% { left: 0; }
         }
 
-        /* 主要内容容器 */
+        /* ========== 主要内容容器 ========== */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -137,6 +200,9 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             transition: transform 0.3s;
         }
+        .gallery-item:hover{
+            transform: scale(1.02);
+        }
 
         .gallery-item img {
             width: 100%;
@@ -146,7 +212,80 @@
             border-bottom: 3px solid #3498db;
         }
 
-        /* 企业信息模块 */
+        /* ========== 检测报告区块 ========== */
+        .report-section {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+        .report-wrap {
+            text-align: center;
+        }
+        .report-img {
+            max-width: 100%;
+            max-height: 700px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        .report-img:hover {
+            opacity: 0.85;
+        }
+        .download-btn {
+            display: inline-block;
+            margin-top: 24px;
+            padding: 12px 32px;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .download-btn:hover {
+            background-color: #217dbb;
+        }
+        .report-item{
+            display:none;
+        }
+        .report-item.active{
+            display:block;
+        }
+
+        /* ========== 大图弹窗样式 ========== */
+        .img-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0,0,0,0.85);
+            z-index: 999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .img-modal.show {
+            display: flex;
+        }
+        .img-modal-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+        .img-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 36px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* ========== 企业信息模块 ========== */
         .company-info {
             background: #2c3e50;
             color: white;
@@ -168,47 +307,61 @@
             margin-bottom: 10px;
         }
 
-        /* 移动端适配 */
+        /* ========== 移动端适配 ========== */
         @media (max-width: 768px) {
+            .menu-toggle{
+                display:block;
+            }
+            .sidebar{
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            .sidebar.open{
+                transform: translateX(0);
+            }
+            .sidebar-mask.open{
+                display:block;
+            }
+            .main-wrap{
+                margin-left:0;
+            }
             .carousel-container {
                 height: 250px;
-                margin-top: 50px;
             }
-
             .header-text h1 {
                 font-size: 1.5rem;
                 line-height: 1.3;
             }
-
             .header-text p {
                 font-size: 0.9rem;
             }
-
             .image-gallery {
                 grid-template-columns: 1fr;
                 gap: 15px;
             }
-
             .comparison {
                 flex-direction: column;
                 gap: 15px;
             }
-
             .duck-type {
                 padding: 15px;
             }
-
             .info-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
-
             .spec-table {
                 font-size: 0.9rem;
             }
-
             .spec-table td {
                 padding: 8px;
+            }
+            .report-section {
+                padding: 20px;
+            }
+            .img-close {
+                font-size: 30px;
+                right: 20px;
             }
         }
 
@@ -216,11 +369,9 @@
             .carousel-container {
                 height: 200px;
             }
-
             .header-text h1 {
                 font-size: 1.3rem;
             }
-
             .gallery-item:hover {
                 transform: none;
             }
@@ -228,11 +379,24 @@
     </style>
 </head>
 <body>
-    <!-- 轮播头部 -->
+<!-- 侧边导航 -->
+<div class="sidebar-mask" id="sidebarMask"></div>
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">德盛羽绒<br>检测报告</div>
+    <div class="sidebar-menu" id="sidebarMenu">
+        <!-- JS自动生成导航按钮 -->
+    </div>
+</aside>
+<button class="menu-toggle" id="menuToggle">☰</button>
+
+<div class="main-wrap">
+    <!-- 轮播头部（你原来3张动画，我补了第3张占位，你可以替换图片地址） -->
     <div class="carousel-container">
         <div class="carousel-slides">
             <div class="carousel-item" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/lunbo1.jpg')"></div>
-            <div class="carousel-item" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/lunbo3.jpg')"></div>        </div>
+            <div class="carousel-item" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/lunbo3.jpg')"></div>
+            <div class="carousel-item" style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/lunbo2.jpg')"></div>
+        </div>
         <div class="header-text">
             <h1>大番鸭绒 - 高端羽绒制品优选原料</h1>
             <p>晋州市德盛羽绒制品厂专业供应</p>
@@ -287,6 +451,19 @@
                 </div>
             </div>
         </div>
+
+        <!-- ========== 新增检测报告区域 ========== -->
+        <div class="report-section">
+            <div id="reportBox">
+                <!-- JS填充报告内容 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 图片弹窗 -->
+    <div class="img-modal">
+        <span class="img-close">×</span>
+        <img class="img-modal-content" src="" alt="大图预览">
     </div>
 
     <div class="company-info">
@@ -305,5 +482,117 @@
             </div>
         </div>
     </div>
+</div>
+
+<script>
+    // ========== 报告列表，在这里新增/修改报告 ==========
+    const reports = [
+        {
+            date:"2026-01-10",
+            title:"2026年01月10日检测报告",
+            imgSrc:"images/B26A00564.jpg",
+            fileSrc:"images/B26A00564.pdf",
+            downloadName:"20260110大番鸭绒检测报告.pdf"
+        },
+        {
+            date:"2026-03-15",
+            title:"2026年03月15日检测报告",
+            imgSrc:"images/B26A00565.jpg",
+            fileSrc:"images/B26A00565.pdf",
+            downloadName:"20260315大番鸭绒检测报告.pdf"
+        },
+        {
+            date:"2026-06-20",
+            title:"2026年06月20日检测报告",
+            imgSrc:"images/B26A00566.jpg",
+            fileSrc:"images/B26A00566.pdf",
+            downloadName:"20260620大番鸭绒检测报告.pdf"
+        }
+    ];
+
+    const sidebarMenu = document.getElementById("sidebarMenu");
+    const reportBox = document.getElementById("reportBox");
+    const sidebar = document.getElementById("sidebar");
+    const sidebarMask = document.getElementById("sidebarMask");
+    const menuToggle = document.getElementById("menuToggle");
+    let activeIndex = 0;
+
+    // 生成侧边导航按钮
+    reports.forEach((item, idx)=>{
+        const btn = document.createElement("button");
+        btn.className = "nav-item" + (idx===0?" active":"");
+        btn.innerText = item.date;
+        btn.onclick = ()=> switchReport(idx);
+        sidebarMenu.appendChild(btn);
+    })
+
+    // 生成报告html
+    function renderReports(){
+        let html = "";
+        reports.forEach((item,idx)=>{
+            html += `
+            <div class="report-item ${idx===0?'active':''}" data-index="${idx}">
+                <h2 class="section-title">${item.title}</h2>
+                <div class="report-wrap">
+                    <img class="report-img" src="${item.imgSrc}" alt="${item.title}" loading="lazy" data-full="${item.imgSrc}">
+                    <a class="download-btn" href="${item.fileSrc}" download="${item.downloadName}">📥 下载完整检测报告</a>
+                </div>
+            </div>
+            `;
+        })
+        reportBox.innerHTML = html;
+        bindImageClick();
+    }
+
+    // 切换报告
+    function switchReport(idx){
+        activeIndex = idx;
+        //导航激活状态
+        document.querySelectorAll(".nav-item").forEach((btn,i)=>{
+            btn.classList.toggle("active", i===idx);
+        })
+        //报告切换
+        document.querySelectorAll(".report-item").forEach((dom,i)=>{
+            dom.classList.toggle("active", i===idx);
+        })
+        //移动端：选中报告后关闭侧边抽屉
+        sidebar.classList.remove("open");
+        sidebarMask.classList.remove("open");
+        //平滑滚动到报告区域
+        document.querySelector(".report-section").scrollIntoView({behavior:"smooth"});
+    }
+
+    //图片弹窗绑定
+    function bindImageClick(){
+        const imgs = document.querySelectorAll('.report-img');
+        const modal = document.querySelector('.img-modal');
+        const modalImg = document.querySelector('.img-modal-content');
+        const closeBtn = document.querySelector('.img-close');
+
+        imgs.forEach(img=>{
+            img.onclick = function(){
+                modalImg.src = this.dataset.full;
+                modal.classList.add('show');
+            }
+        })
+        closeBtn.onclick = ()=> modal.classList.remove('show');
+        modal.onclick = function(e){
+            if(e.target === modal) modal.classList.remove('show');
+        }
+    }
+
+    //移动端打开/关闭侧边抽屉
+    menuToggle.onclick = function(){
+        sidebar.classList.toggle("open");
+        sidebarMask.classList.toggle("open");
+    }
+    sidebarMask.onclick = function(){
+        sidebar.classList.remove("open");
+        sidebarMask.classList.remove("open");
+    }
+
+    //初始化渲染
+    renderReports();
+</script>
 </body>
 </html>
